@@ -13,6 +13,7 @@
       oapp: '/client_js/myapp',
       router: '/client/routes/router',
       templates: '/client/templates/',
+      clientjs: '/client/js',
       views: '/client/views',
       models: '/client/models/',
       collections: '/client/collections/',
@@ -22,25 +23,27 @@
     },
 
     shim: {
-      underscore: {
+      'underscore': {
         exports: '_'
       },
 
-      backbone: {
+      'backbone': {
         deps: ['jquery', 'underscore'],
         exports: 'Backbone'
       },
 
-      handlebars: {
+      'handlebars': {
         deps: ['jquery' ],
         exports: 'Handlebars'
       },
-      
+
       'bootstrap': {
         deps: ['jquery'],
         exports: 'Bootstrap'
+      },
+
+
     }
-     }
 
 });
 

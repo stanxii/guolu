@@ -13,8 +13,24 @@
 */
           
    //The application
+
+/*
    define(['jquery','underscore','backbone','handlebars','collections/people.collection','models/jinliao.model','models/chuzha.model','TableView','views/chuzha.view', 'views/page.jinliao.view' ],
       function($, _, Backbone, Handlebars, People,Jinliao,Chuzha, TableView, ChuzhaView, JinliaoView) {
+
+*/
+   define( function(require) {
+     var $                   = require('jquery'),
+         _                   = require('underscore'),
+         Backbone            = require('backbone'),
+         Handlebars          = require('handlebars'),
+         People              = require('collections/people.collection'),
+         Jinliao             = require('models/jinliao.model'),
+         Chuzha              = require('models/chuzha.model'),
+         TableView           = require('TableView'),
+         ChuzhaView          = require('views/chuzha.view'),
+         JinliaoView         = require('views/page.jinliao.view'),
+         WenduView           = require('views/wendu.view');
 
       'use strict';
       var Router = Backbone.Router.extend({
@@ -129,15 +145,67 @@
         showWendu: function(actions) {
             var data= {'chuzhaAction1': 1, 'chuzhaAction2': 2 }; 
             var chuzha= new Chuzha(data);
-            var chuzhaView = new ChuzhaView({
+            var wenduView = new WenduView({
                  model: chuzha 
                 });
-             chuzhaView.render();
+             wenduView.render();
              console.log($("#page"));
              $("#page").replaceWith('<div id="page"><div id="wendu" class="inner"/></div>');
                
              //$(".inner").append(tableView.render().$el);
-             $("#wendu").replaceWith(chuzhaView.render().$el);
+             $("#wendu").replaceWith(wenduView.render().$el);
+	        var g1 = new JustGage({
+		  id: "gauge.lutang", 
+		  value: getRandomInt(0, 1500), 
+		  min: 0,
+		  max: 1500,
+		  title: "炉膛温度",
+		  label: "temperature"
+		});
+
+	        var g1 = new JustGage({
+		  id: "gauge.lukou", 
+		  value: getRandomInt(0, 1500), 
+		  min: 0,
+		  max: 1500,
+		  title: "炉膛温度",
+		  label: "temperature"
+		});
+	        var g1 = new JustGage({
+		  id: "gauge.ran2rukou", 
+		  value: getRandomInt(0, 1500), 
+		  min: 0,
+		  max: 1500,
+		  title: "炉膛温度",
+		  label: "temperature"
+		});
+
+	        var g1 = new JustGage({
+		  id: "gauge.ran2chukou", 
+		  value: getRandomInt(0, 1500), 
+		  min: 0,
+		  max: 1500,
+		  title: "炉膛温度",
+		  label: "temperature"
+		});
+
+	        var g1 = new JustGage({
+		  id: "gauge.budairu", 
+		  value: getRandomInt(0, 1500), 
+		  min: 0,
+		  max: 1500,
+		  title: "炉膛温度",
+		  label: "temperature"
+		});
+	        var g1 = new JustGage({
+		  id: "gauge.budaichu", 
+		  value: getRandomInt(0, 1500), 
+		  min: 0,
+		  max: 1500,
+		  title: "炉膛温度",
+		  label: "temperature"
+		});
+
              $('li[class="active"]').removeClass("active");
              $('a[href="#wendu"]').parent().attr("class","active");
         },

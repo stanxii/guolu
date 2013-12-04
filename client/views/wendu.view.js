@@ -18,6 +18,9 @@
       function($, _, Backbone, Handlebars,  wenduTemplate) {
 
       'use strict';
+    
+
+
       var WenduView = Backbone.View.extend({
 
         tagName: 'div',
@@ -27,11 +30,14 @@
         },
 
         render: function() {
-         
           var html = this.template(this.model.toJSON());
           this.setElement($(html));
+          this.initWenduji(); 
           //this.$el.html(html);
           return this;
+        },
+
+        initWenduji: function() {
         },
    
       });
