@@ -13,7 +13,7 @@
       oapp: '/client_js/myapp',
       router: '/client/routes/router',
       templates: '/client/templates/',
-      views: '/client/views/',
+      views: '/client/views',
       models: '/client/models/',
       collections: '/client/collections/',
       PeopleCollection: '/client/collections/people.collection',

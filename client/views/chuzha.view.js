@@ -14,14 +14,14 @@
 */
           
    //The application
-   define(['jquery','underscore','backbone','handlebars','models/jinliao.model','PeopleCollection','text!templates/page.jinliao.template.html'],
-      function($, _, Backbone, Handlebars,  Jinliao, People, jinliaoTemplate) {
+   define(['jquery','underscore','backbone','handlebars','text!templates/chuzha.template.html'],
+      function($, _, Backbone, Handlebars,  chuzhaTemplate) {
 
       'use strict';
-      var JinliaoView = Backbone.View.extend({
+      var ChuzhaView = Backbone.View.extend({
 
         tagName: 'div',
-        template: Handlebars.compile(jinliaoTemplate),
+        template: Handlebars.compile(chuzhaTemplate),
 
         initialize: function() {
         },
@@ -36,5 +36,5 @@
    
       });
 
-       return JinliaoView; 
+       return ChuzhaView; 
     });

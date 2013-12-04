@@ -32,7 +32,8 @@
 
 .switch.demo1 label {
   border-radius: 50%;
-  background: #eaeaea;
+  /*background: #eaeaea; stan*/
+  background: #333;
   box-shadow: 
       0 3px 5px rgba(0,0,0,0.25),
       inset 0 1px 0 rgba(255,255,255,0.3),
@@ -61,11 +62,11 @@
 .switch.demo1 label:before {
   content: "";
   position: absolute;
-  width: 20%;
-  height: 20%;
+  width: 40%;
+  height: 40%;
   border-radius: inherit;
-  left: 40%;
-  top: 40%;
+  left: 30%;
+  top: 30%;
   background: #969696;
   background: radial-gradient(40% 35%, #ccc, #969696 60%);
   box-shadow:

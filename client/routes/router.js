@@ -13,8 +13,8 @@
 */
           
    //The application
-   define(['jquery','underscore','backbone','handlebars','collections/people.collection','models/jinliao.model','TableView','views/page.jinliao.view'],
-      function($, _, Backbone, Handlebars, People,Jinliao, TableView, JinliaoView) {
+   define(['jquery','underscore','backbone','handlebars','collections/people.collection','models/jinliao.model','models/chuzha.model','TableView','views/chuzha.view', 'views/page.jinliao.view' ],
+      function($, _, Backbone, Handlebars, People,Jinliao,Chuzha, TableView, ChuzhaView, JinliaoView) {
 
       'use strict';
       var Router = Backbone.Router.extend({
@@ -23,6 +23,7 @@
            '': 'showHome',  //homeView
            'home': 'showHome', //show homeview also
            'jinliao': 'showJinliao', //show homeview also
+           'chuzha': 'showChuzha', //show homeview also
          },
 
 
@@ -55,7 +56,7 @@
 
          showJinliao: function(actions) {
            //will render homeview and navigate to homeView
-            var data= {'jinliaoAction1': 1, 'jinliaoAction2': 1 }; 
+            var data= {'jinliaoAction1': 1, 'jinliaoAction2': 2 }; 
             var jinliao= new Jinliao(data);
             var jinliaoView = new JinliaoView({
                  model: jinliao 
@@ -66,8 +67,30 @@
                
              //$(".inner").append(tableView.render().$el);
              $("#jinliao").replaceWith(jinliaoView.render().$el);
+             $('li[class="active"]').removeClass("active");
+             $('a[href="#jinliao"]').parent().attr("class","active");
 
          },
+   
+        showChuzha: function(actions) {
+           //will render homeview and navigate to homeView
+            var data= {'chuzhaAction1': 1, 'chuzhaAction2': 2 }; 
+            var chuzha= new Chuzha(data);
+            var chuzhaView = new ChuzhaView({
+                 model: chuzha 
+                });
+             chuzhaView.render();
+             console.log($("#page"));
+             $("#page").replaceWith('<div id="page"><div id="chuzha" class="inner"/></div>');
+               
+             //$(".inner").append(tableView.render().$el);
+             $("#chuzha").replaceWith(chuzhaView.render().$el);
+             $('li[class="active"]').removeClass("active");
+             $('a[href="#chuzha"]').parent().attr("class","active");
+
+         },
+
+
 
  
        }); 
