@@ -30,7 +30,10 @@
          TableView           = require('TableView'),
          ChuzhaView          = require('views/chuzha.view'),
          JinliaoView         = require('views/page.jinliao.view'),
-         WenduView           = require('views/wendu.view');
+         YinfengjiView       = require('views/yinfengji.view'),
+         ShuibengView       = require('views/shuibeng.view'),
+         WenduView           = require('views/wendu.view'),
+         GufengjiView       = require('views/gufengji.view');
 
       'use strict';
       var Router = Backbone.Router.extend({
@@ -113,31 +116,52 @@
         showYinfengji: function(actions) {
             var data= {'chuzhaAction1': 1, 'chuzhaAction2': 2 }; 
             var chuzha= new Chuzha(data);
-            var chuzhaView = new ChuzhaView({
+            var yinfengjiView = new YinfengjiView({
                  model: chuzha 
                 });
-             chuzhaView.render();
+             yinfengjiView.render();
              console.log($("#page"));
              $("#page").replaceWith('<div id="page"><div id="yinfengji" class="inner"/></div>');
                
              //$(".inner").append(tableView.render().$el);
-             $("#yinfengji").replaceWith(chuzhaView.render().$el);
+             $("#yinfengji").replaceWith(yinfengjiView.render().$el);
+
+      
              $('li[class="active"]').removeClass("active");
              $('a[href="#yinfengji"]').parent().attr("class","active");
+           
+              var g1 = new JustGage({
+                  id: "gauge.yinfeng.freq",
+                  value: getRandomInt(0, 1500),
+                  min: 0,
+                  max: 1500,
+                  title: "炉膛温度",
+                  label: "temperature"
+                });
+
+                var g1 = new JustGage({
+                  id: "gauge.yinfeng.current",
+                  value: getRandomInt(0, 1500),
+                  min: 0,
+                  max: 1500,
+                  title: "炉膛温度",
+                  label: "temperature"
+                });
+
         },
 
         showShuibeng: function(actions) {
             var data= {'chuzhaAction1': 1, 'chuzhaAction2': 2 }; 
             var chuzha= new Chuzha(data);
-            var chuzhaView = new ChuzhaView({
+            var shuibengiew = new ShuibengView({
                  model: chuzha 
                 });
-             chuzhaView.render();
+             shuibengiew.render();
              console.log($("#page"));
              $("#page").replaceWith('<div id="page"><div id="shuibeng" class="inner"/></div>');
                
              //$(".inner").append(tableView.render().$el);
-             $("#shuibeng").replaceWith(chuzhaView.render().$el);
+             $("#shuibeng").replaceWith(shuibengiew.render().$el);
              $('li[class="active"]').removeClass("active");
              $('a[href="#shuibeng"]').parent().attr("class","active");
         },
@@ -213,15 +237,15 @@
         showGufengji: function(actions) {
             var data= {'chuzhaAction1': 1, 'chuzhaAction2': 2 }; 
             var chuzha= new Chuzha(data);
-            var chuzhaView = new ChuzhaView({
+            var gufengjiView = new GufengjiView({
                  model: chuzha 
                 });
-             chuzhaView.render();
+             gufengjiView.render();
              console.log($("#page"));
              $("#page").replaceWith('<div id="page"><div id="gufengji" class="inner"/></div>');
                
              //$(".inner").append(tableView.render().$el);
-             $("#gufengji").replaceWith(chuzhaView.render().$el);
+             $("#gufengji").replaceWith(gufengjiView.render().$el);
              $('li[class="active"]').removeClass("active");
              $('a[href="#gufengji"]').parent().attr("class","active");
         },
