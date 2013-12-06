@@ -25,15 +25,18 @@
          Backbone            = require('backbone'),
          Handlebars          = require('handlebars'),
          People              = require('collections/people.collection'),
+         Alarm               = require('models/alarm.model'),
+         Alarms              = require('collections/alarm.collection'),
          Jinliao             = require('models/jinliao.model'),
          Chuzha              = require('models/chuzha.model'),
          TableView           = require('TableView'),
          ChuzhaView          = require('views/chuzha.view'),
          JinliaoView         = require('views/page.jinliao.view'),
          YinfengjiView       = require('views/yinfengji.view'),
-         ShuibengView       = require('views/shuibeng.view'),
+         ShuibengView        = require('views/shuibeng.view'),
          WenduView           = require('views/wendu.view'),
-         GufengjiView       = require('views/gufengji.view');
+         AlarmView           = require('views/alarm.view'),
+         GufengjiView        = require('views/gufengji.view');
 
       'use strict';
       var Router = Backbone.Router.extend({
@@ -75,6 +78,30 @@
                         $("#page").replaceWith('<div id="page"><div id="myusers" class="inner"/></div>');
 			//$(".inner").replaceWith(tableView.render().$el);
 			$("#myusers").append(tableView.render().$el);
+
+                       //alarmview
+			var alarmdata = [ {
+				'title' : 'stan 温度告警',
+				'dtime' : '11/27 2013',
+				'alarmcode' : 37,
+				'alarmposition' : '11/27 2013'
+			}, {
+				'title' : 'stan 温度告警',
+				'dtime' : '11/27 2013',
+				'alarmcode' : 37,
+				'alarmposition' : '11/27 2013'
+			}, {
+				'title' : 'stan 温度告警',
+				'dtime' : '11/27 2013',
+				'alarmcode' : 37,
+				'alarmposition' : '11/27 2013'
+			}, ];
+	
+			var alarms = new Alarms(alarmdata);
+			var alarmView = new AlarmView({
+				collection : alarms 
+			});
+			$("#alarm").append(alarmView.render().$el);
          },    
 
          showJinliao: function(actions) {
@@ -192,7 +219,7 @@
 		  value: getRandomInt(0, 1500), 
 		  min: 0,
 		  max: 1500,
-		  title: "炉膛温度",
+		  title: "炉口温度",
 		  label: "temperature"
 		});
 	        var g1 = new JustGage({
@@ -200,7 +227,7 @@
 		  value: getRandomInt(0, 1500), 
 		  min: 0,
 		  max: 1500,
-		  title: "炉膛温度",
+		  title: "二燃室入口温度",
 		  label: "temperature"
 		});
 
@@ -209,7 +236,7 @@
 		  value: getRandomInt(0, 1500), 
 		  min: 0,
 		  max: 1500,
-		  title: "炉膛温度",
+		  title: "二燃室出口温度",
 		  label: "temperature"
 		});
 
@@ -218,7 +245,7 @@
 		  value: getRandomInt(0, 1500), 
 		  min: 0,
 		  max: 1500,
-		  title: "炉膛温度",
+		  title: "布袋入温度",
 		  label: "temperature"
 		});
 	        var g1 = new JustGage({
@@ -226,7 +253,7 @@
 		  value: getRandomInt(0, 1500), 
 		  min: 0,
 		  max: 1500,
-		  title: "炉膛温度",
+		  title: "布袋出温度",
 		  label: "temperature"
 		});
 

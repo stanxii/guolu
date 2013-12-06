@@ -5,13 +5,17 @@ body {
 }
 
 .usertable {
-  width: 300px;
+  margin: auto;
 }
 
 #page {
   padding-top: 20px;
 }
 
+.realtimealarm li {
+  display:inline-block;
+  padding-right: 20px;
+}
 
 .projects .thumbnail{
    display:block;
