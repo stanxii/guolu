@@ -54,6 +54,33 @@
 
 
         
+         renderAlarmBlock: function() {
+                       //alarmview
+			var alarmdata = [ {
+				'title' : 'stan 温度告警',
+				'dtime' : '11/27 2013',
+				'alarmcode' : 37,
+				'alarmposition' : '11/27 2013'
+			}, {
+				'title' : 'stan 温度告警',
+				'dtime' : '11/27 2013',
+				'alarmcode' : 37,
+				'alarmposition' : '11/27 2013'
+			}, {
+				'title' : 'stan 温度告警',
+				'dtime' : '11/27 2013',
+				'alarmcode' : 37,
+				'alarmposition' : '11/27 2013'
+			}, ];
+	
+			var alarms = new Alarms(alarmdata);
+			var alarmView = this.AlarmView || new AlarmView({
+				collection : alarms 
+			});
+			$("#alarm").replaceWith(alarmView.render().$el);
+ 
+         },
+
          showHome: function(actions) {
              
 			// will render homeview and navigate to homeView
@@ -78,31 +105,13 @@
                         $("#page").replaceWith('<div id="page"><div id="myusers" class="inner"/></div>');
 			//$(".inner").replaceWith(tableView.render().$el);
 			$("#myusers").append(tableView.render().$el);
+                      
+                        $('li[class="active"]').removeClass("active");
+                        $('a[href="#"]').parent().attr("class","active");
 
-                       //alarmview
-			var alarmdata = [ {
-				'title' : 'stan 温度告警',
-				'dtime' : '11/27 2013',
-				'alarmcode' : 37,
-				'alarmposition' : '11/27 2013'
-			}, {
-				'title' : 'stan 温度告警',
-				'dtime' : '11/27 2013',
-				'alarmcode' : 37,
-				'alarmposition' : '11/27 2013'
-			}, {
-				'title' : 'stan 温度告警',
-				'dtime' : '11/27 2013',
-				'alarmcode' : 37,
-				'alarmposition' : '11/27 2013'
-			}, ];
-	
-			var alarms = new Alarms(alarmdata);
-			var alarmView = new AlarmView({
-				collection : alarms 
-			});
-			$("#alarm").append(alarmView.render().$el);
-         },    
+			this.renderAlarmBlock();
+
+        },    
 
          showJinliao: function(actions) {
            //will render homeview and navigate to homeView
@@ -120,6 +129,7 @@
              $('li[class="active"]').removeClass("active");
              $('a[href="#jinliao"]').parent().attr("class","active");
 
+	     this.renderAlarmBlock();
          },
    
         showChuzha: function(actions) {
@@ -137,6 +147,8 @@
              $("#chuzha").replaceWith(chuzhaView.render().$el);
              $('li[class="active"]').removeClass("active");
              $('a[href="#chuzha"]').parent().attr("class","active");
+
+	     this.renderAlarmBlock();
 
          },
 
@@ -175,6 +187,8 @@
                   label: "temperature"
                 });
 
+	     this.renderAlarmBlock();
+
         },
 
         showShuibeng: function(actions) {
@@ -191,6 +205,8 @@
              $("#shuibeng").replaceWith(shuibengiew.render().$el);
              $('li[class="active"]').removeClass("active");
              $('a[href="#shuibeng"]').parent().attr("class","active");
+
+	     this.renderAlarmBlock();
         },
 
         showWendu: function(actions) {
@@ -259,6 +275,8 @@
 
              $('li[class="active"]').removeClass("active");
              $('a[href="#wendu"]').parent().attr("class","active");
+
+	     this.renderAlarmBlock();
         },
  
         showGufengji: function(actions) {
@@ -275,6 +293,8 @@
              $("#gufengji").replaceWith(gufengjiView.render().$el);
              $('li[class="active"]').removeClass("active");
              $('a[href="#gufengji"]').parent().attr("class","active");
+
+	     this.renderAlarmBlock();
         },
        }); 
 
